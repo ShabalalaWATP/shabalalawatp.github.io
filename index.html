@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honor & Alex's 1st Anniversary Date</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <span id="days">365</span>
+                    <label>Days Together</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">8,760</span>
+                    <label>Hours of Love</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">525,600</span>
+                    <label>Minutes of Joy</label>
+                </div>
+            </div>
+            <h1 class="hero-title">Our First Anniversary</h1>
+            <p class="hero-subtitle">October 4th, 2025</p>
+            <div class="scroll-indicator">
+                <span>Scroll to explore our journey</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-waves">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <div class="couple-photo-section">
+        <h2>The Happy Couple</h2>
+        <div class="couple-photo-wrapper">
+            <img src="HappyCouple.jpg" alt="Honor & Alex" class="couple-photo">
+        </div>
+    </div>
+
+    <main>
+        <div class="intro-section">
+            <h2>Dear Honor,</h2>
+            <div class="love-letter">
+                <p>Well, we've officially done it, we've survived our first year together as a couple, I wouldn't change any of it for the world, I've found the woman I love, the woman I want to grow old with, the woman I adore. I can't wait to spend today with you and I can't wait to spend the rest of my life with you.</p>
+                <p>I've planned something special for our anniversary. Every moment of this day has been carefully chosen to celebrate our love and create memories we'll cherish forever.</p>
+                <div class="letter-signature">
+                    <p><strong>Love you always,</strong></p>
+                    <p><strong>Alex</strong></p>
+                </div>
+            </div>
+            <button class="cta-button" onclick="startJourney()">
+                <span>Begin Our Journey</span>
+                <i class="fas fa-heart"></i>
+            </button>
+        </div>
+
+        <section class="timeline" id="timeline">
+            <div class="timeline-line">
+                <div class="timeline-progress"></div>
+            </div>
+            
+            <div class="event-card" data-aos="fade-right">
+                <div class="event-icon pulse"><i class="fas fa-home"></i></div>
+                <div class="event-time">13:00</div>
+                <div class="event-content">
+                    <h2>Our Journey Begins</h2>
+                    <div class="event-img" onclick="openGallery(this)">
+                        <img src="Pickup.jpg" alt="Our journey begins">
+                        <div class="img-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <p>Pick you up from your place as we start our anniversary adventure!</p>
+                    <div class="event-mood">
+                        <span>Mood: <i class="fas fa-grin-hearts"></i> Excited</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="road-segment car-journey">
+                <i class="fas fa-car-side"></i>
+                <span>40 minute drive</span>
+            </div>
+
+            <div class="event-card">
+                <div class="event-icon pulse"><i class="fas fa-paw"></i></div>
+                <div class="event-time">13:40</div>
+                <div class="event-content">
+                    <h2>Bristol Zoo Gardens</h2>
+                    <div class="event-img" onclick="openGallery(this)">
+                        <img src="BristolZoo.jpg" alt="Zoo animals">
+                        <div class="img-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <p>Explore the wonders of wildlife together. Your favorite animals are waiting!</p>
+                    <div class="event-details">
+                        <span><i class="far fa-clock"></i> 1.5 hours</span>
+                        <span><i class="far fa-smile"></i> Animal encounters</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="road-segment car-journey">
+                <i class="fas fa-car-side"></i>
+                <span>45 minute scenic drive</span>
+            </div>
+
+            <div class="event-card">
+                <div class="event-icon"><i class="fas fa-city"></i></div>
+                <div class="event-time">15:45</div>
+                <div class="event-content">
+                    <h2>Welcome to Bath</h2>
+                    <div class="event-img" onclick="openGallery(this)">
+                        <img src="WelcomeToBath.jpg.jpg" alt="Welcome to Bath">
+                        <div class="img-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <p>Arrive in the stunning Georgian city, ready for our romantic exploration.</p>
+                </div>
+            </div>
+
+            <div class="walking-path">
+                <div class="path-icon"><i class="fas fa-walking"></i></div>
+                <div class="path-line"></div>
+                <span class="path-time">15 min walk</span>
+            </div>
+
+            <div class="event-card">
+                <div class="event-icon"><i class="fas fa-church"></i></div>
+                <div class="event-time">16:00</div>
+                <div class="event-content">
+                    <h2>Bath Abbey Tour</h2>
+                    <div class="event-img" onclick="openGallery(this)">
+                        <img src="BathAbbeyTour.jpg" alt="Bath Abbey">
+                        <div class="img-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <p>Discover 1,200 years of history in this magnificent Gothic church.</p>
+                    <div class="event-details">
+                        <span><i class="far fa-clock"></i> 1 hour</span>
+                        <span><i class="fas fa-camera"></i> Photo opportunities</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="walking-path">
+                <div class="path-icon"><i class="fas fa-walking"></i></div>
+                <div class="path-line"></div>
+                <span class="path-time">10 min stroll</span>
+            </div>
+
+            <div class="event-card highlight">
+                <div class="event-icon pulse"><i class="fas fa-utensils"></i></div>
+                <div class="event-time">17:15</div>
+                <div class="event-content">
+                    <h2>Dinner at Banana Tree</h2>
+                    <div class="event-img" onclick="openGallery(this)">
+                        <img src="BananaTree.jpg" alt="Dinner at Banana Tree">
+                        <div class="img-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <p>Savor delicious Pan-Asian cuisine in a vibrant atmosphere.</p>
+                    <div class="event-details">
+                        <span><i class="fas fa-star"></i> Your favorites</span>
+                        <span><i class="fas fa-glass-cheers"></i> Anniversary toast</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="walking-path">
+                <div class="path-icon"><i class="fas fa-walking"></i></div>
+                <div class="path-line"></div>
+                <span class="path-time">5 min walk</span>
+            </div>
+
+            <div class="event-card">
+                <div class="event-icon"><i class="fas fa-monument"></i></div>
+                <div class="event-time">18:45</div>
+                <div class="event-content">
+                    <h2>Roman Baths</h2>
+                    <div class="event-img" onclick="openGallery(this)">
+                        <img src="RomanBaths.jpg" alt="Roman Baths">
+                        <div class="img-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <p>Experience the ancient Roman Baths in the romantic evening atmosphere.</p>
+                    <div class="event-details">
+                        <span><i class="far fa-clock"></i> 1 hour</span>
+                        <span><i class="fas fa-history"></i> 2,000 years of history</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="walking-path optional-path">
+                <div class="path-icon"><i class="fas fa-walking"></i></div>
+                <div class="path-line"></div>
+                <span class="path-time">8 min walk</span>
+            </div>
+
+            <div class="event-card optional">
+                <div class="event-icon"><i class="fas fa-cocktail"></i></div>
+                <div class="event-time">19:45</div>
+                <div class="event-content">
+                    <h2>Cocktails at Hideout Bar <span class="optional-label">(Optional)</span></h2>
+                    <div class="event-img" onclick="openGallery(this)">
+                        <img src="HideoutBar.jpg" alt="Hideout Bar">
+                        <div class="img-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <p>Cozy speakeasy vibes with craft cocktails if we're in the mood.</p>
+                </div>
+            </div>
+
+            <div class="walking-path optional-path">
+                <div class="path-icon"><i class="fas fa-walking"></i></div>
+                <div class="path-line"></div>
+                <span class="path-time">5 min walk</span>
+            </div>
+
+            <div class="event-card optional">
+                <div class="event-icon"><i class="fas fa-coffee"></i></div>
+                <div class="event-time">20:15</div>
+                <div class="event-content">
+                    <h2>Drinks at Cosy Club <span class="optional-label">(Optional)</span></h2>
+                    <div class="event-img" onclick="openGallery(this)">
+                        <img src="CosyClub.jpeg" alt="Drinks at Cosy Club">
+                        <div class="img-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <p>Indulge in decadent desserts in elegant surroundings.</p>
+                </div>
+            </div>
+
+            <div class="walking-path optional-path">
+                <div class="path-icon"><i class="fas fa-walking"></i></div>
+                <div class="path-line"></div>
+                <span class="path-time">15 min uphill walk</span>
+            </div>
+
+            <div class="event-card optional highlight">
+                <div class="event-icon"><i class="fas fa-sun"></i></div>
+                <div class="event-time">20:50</div>
+                <div class="event-content">
+                    <h2>Sunset at Alexandra Park <span class="optional-label">(Weather Permitting)</span></h2>
+                    <div class="event-img" onclick="openGallery(this)">
+                        <img src="Sunset.jpg" alt="Sunset view">
+                        <div class="img-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <p>Watch the golden hour paint Bath in romantic hues from the best viewpoint.</p>
+                </div>
+            </div>
+
+            <div class="road-segment car-journey">
+                <i class="fas fa-car-side"></i>
+                <span>Drive home under the stars</span>
+            </div>
+
+            <div class="event-card">
+                <div class="event-icon"><i class="fas fa-heart"></i></div>
+                <div class="event-time">21:15</div>
+                <div class="event-content">
+                    <h2>Journey Home</h2>
+                    <div class="event-img" onclick="openGallery(this)">
+                        <img src="Car.jpeg" alt="Night drive">
+                        <div class="img-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <p>Drive home under the stars, hearts full of beautiful memories from our perfect day.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="photo-memories">
+            <h2>Creating Memories Together</h2>
+            <div class="memory-grid">
+                <div class="memory-card">
+                    <i class="fas fa-camera-retro"></i>
+                    <span>Photos to capture</span>
+                </div>
+                <div class="memory-card">
+                    <i class="fas fa-laugh-beam"></i>
+                    <span>Smiles to share</span>
+                </div>
+                <div class="memory-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Places to explore</span>
+                </div>
+                <div class="memory-card">
+                    <i class="fas fa-heart"></i>
+                    <span>Love to celebrate</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-section">
+            <div class="message-hearts">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+            <h2>Happy Anniversary, My Love</h2>
+            <p>This day is just the beginning of many more adventures together. Here's to us and our beautiful journey!</p>
+            <div class="signature">With all my love, Alex ❤️</div>
+            <div class="love-meter">
+                <span>Love Level:</span>
+                <div class="meter-bar">
+                    <div class="meter-fill"></div>
+                </div>
+                <span>Infinite ∞</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Image Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <span class="close-modal" onclick="closeGallery()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <footer>
+        <p>Made with <i class="fas fa-heart heart-beat"></i> by Alex for Honor | October 4th, 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
