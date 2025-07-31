@@ -36,16 +36,28 @@ function updateTimelineProgress() {
     window.addEventListener('scroll', () => {
         const timeline = document.querySelector('.timeline');
         const timelineProgress = document.querySelector('.timeline-progress');
+        
+        if (!timeline || !timelineProgress) return;
+        
         const timelineRect = timeline.getBoundingClientRect();
+        const timelineTop = timelineRect.top + window.scrollY;
+        const timelineHeight = timeline.offsetHeight;
         const windowHeight = window.innerHeight;
+        const scrollPosition = window.scrollY;
+        
+        // Calculate how far through the timeline we've scrolled
+        const scrollStart = timelineTop - windowHeight * 0.8; // Start filling when timeline is 80% up the screen
+        const scrollEnd = timelineTop + timelineHeight - windowHeight * 0.2; // End when we've scrolled past timeline
         
         let progress = 0;
-        if (timelineRect.top < windowHeight && timelineRect.bottom > 0) {
-            const visible = Math.min(windowHeight, timelineRect.bottom) - Math.max(0, timelineRect.top);
-            progress = (visible / timelineRect.height) * 100;
+        
+        if (scrollPosition > scrollStart && scrollPosition < scrollEnd) {
+            progress = ((scrollPosition - scrollStart) / (scrollEnd - scrollStart)) * 100;
+        } else if (scrollPosition >= scrollEnd) {
+            progress = 100;
         }
         
-        timelineProgress.style.height = `${Math.min(progress, 100)}%`;
+        timelineProgress.style.height = `${Math.min(Math.max(progress, 0), 100)}%`;
     });
 }
 
