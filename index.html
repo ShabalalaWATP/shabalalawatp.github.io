@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alex Money Plan — Buffer‑First Avalanche</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="container hero" role="banner">
+      <div class="title-wrap">
+        <div class="logo-blob" aria-hidden="true"></div>
+        <h1 class="title-neon"><span>Alex Money Plan</span></h1>
+      </div>
+      <p class="subtitle subtitle-pop">Buffer‑first → Avalanche → Savings. 18‑month forecast.</p>
+    </header>
+
+    <main class="container">
+      <section class="card" aria-labelledby="controls-title">
+        <h2 id="controls-title">Controls</h2>
+        <div class="controls-grid">
+          <label>
+            <span>Default monthly income</span>
+            <div class="inline">
+              <input id="default-income" type="number" step="0.01" inputmode="decimal" />
+              <button id="apply-income-all" type="button" class="btn">Apply to all</button>
+            </div>
+          </label>
+          <label>
+            <span>Extra planned (avalanche)</span>
+            <input id="extra-planned" type="number" step="0.01" inputmode="decimal" />
+          </label>
+          <label>
+            <span>Weekly food</span>
+            <input id="weekly-food" type="number" step="0.01" inputmode="decimal" />
+          </label>
+          <label>
+            <span>Treat uplift (bi‑monthly)</span>
+            <input id="treat-uplift" type="number" step="0.01" inputmode="decimal" />
+          </label>
+          <label class="checkbox">
+            <input id="include-mins" type="checkbox" />
+            <span>Include minimums in payoff & drop when cleared</span>
+          </label>
+          <label class="checkbox">
+            <input id="compact-rows" type="checkbox" />
+            <span>Compact table rows</span>
+          </label>
+          <div class="control-actions">
+            <button id="export-csv" type="button" class="btn">
+              <span class="icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 3h10v4H7V3z" fill="currentColor" opacity=".6"/>
+                  <path d="M5 7h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z" fill="currentColor"/>
+                  <path d="M8 12h8M8 16h8" stroke="#0c1220" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+                </svg>
+              </span>
+              Export CSV
+            </button>
+            <button id="reset-data" type="button" class="btn btn-secondary">Reset to defaults</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-2">
+        <div class="card" aria-labelledby="buffer-title">
+          <h2 id="buffer-title">Current Account Buffer</h2>
+          <div class="buffer-controls">
+            <label for="buffer-month-select"><span class="icon icon-cal" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="5" width="18" height="16" rx="2" fill="currentColor" opacity=".15"/>
+                <path d="M3 9h18" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </span> Month</label>
+            <select id="buffer-month-select" aria-label="Select month for buffer view"></select>
+          </div>
+          <div class="buffer-row">
+            <div class="buffer-col">
+              <div class="metric"><span class="label">Start‑of‑month balance:</span> <span id="start-balance" class="mono"></span></div>
+              <div class="progress-wrap" aria-label="Start-of-month progress to £3,500">
+                <div id="start-progress" class="progress-bar"></div>
+                <div class="progress-cap">£3,500</div>
+              </div>
+              <div class="metric"><span class="label">End‑of‑month balance:</span> <span id="end-balance" class="mono"></span></div>
+              <div class="progress-wrap" aria-label="End-of-month progress to £3,500">
+                <div id="end-progress" class="progress-bar"></div>
+                <div class="progress-cap">£3,500</div>
+              </div>
+              <div class="debt-bar savings-secondary">
+                <div class="bar-label"><span>Savings above buffer</span> <span id="savings-post-amount" class="mono"></span></div>
+                <div class="bar"><div id="bar-savings-post" class="bar-fill savings"></div></div>
+              </div>
+              <div class="metric"><span class="label">Buffer mode:</span> <span id="buffer-mode" class="mono tag"></span></div>
+            </div>
+            <div class="buffer-col">
+              <label class="live-balance">
+                <span>Live balance (manual)</span>
+                <div class="inline">
+                  <input id="live-balance" type="range" min="0" max="6000" step="10" />
+                  <span id="live-balance-label" class="mono"></span>
+                </div>
+              </label>
+              <div class="progress-wrap" aria-label="Live balance progress to £3,500">
+                <div id="live-progress" class="progress-bar"></div>
+                <div class="progress-cap">£3,500</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" aria-labelledby="summary-title">
+          <h2 id="summary-title">Summary</h2>
+          <div class="summary-grid">
+            <div class="metric"><span class="label">Debt‑free by:</span> <span id="debt-free-by" class="mono"></span></div>
+            <div class="metric"><span class="label">End‑period savings:</span> <span id="end-savings" class="mono"></span></div>
+            <div class="metric"><span class="label">Avg monthly cash needed:</span> <span id="avg-cash" class="mono"></span></div>
+            <div class="metric"><span class="label">Peak monthly cash needed:</span> <span id="peak-cash" class="mono"></span></div>
+            <div class="metric"><span class="label">118 Loan paid:</span> <span id="loan-118-date" class="mono"></span></div>
+            <div class="metric"><span class="label">Card paid:</span> <span id="loan-cc-date" class="mono"></span></div>
+            <div class="metric"><span class="label">Updraft paid:</span> <span id="loan-up-date" class="mono"></span></div>
+            <div class="metric"><span class="label">£5k savings:</span> <span id="save-5k-date" class="mono"></span></div>
+            <div class="metric"><span class="label">£10k savings:</span> <span id="save-10k-date" class="mono"></span></div>
+            <div class="metric"><span class="label">£15k savings:</span> <span id="save-15k-date" class="mono"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="fixed-breakdown-title">
+        <h2 id="fixed-breakdown-title">Outgoings</h2>
+        <div class="fixed-controls">
+          <label for="fixed-month-select"><span class="icon icon-cal" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="5" width="18" height="16" rx="2" fill="currentColor" opacity=".15"/>
+              <path d="M3 9h18" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span> Month</label>
+          <select id="fixed-month-select" aria-label="Select month for outgoings"></select>
+        </div>
+        <div id="fixed-breakdown" class="breakdown"></div>
+      </section>
+
+      <section class="card" aria-labelledby="debt-progress-title">
+        <h2 id="debt-progress-title">Debt Progress</h2>
+        <div class="debt-controls">
+          <label for="debt-month-select"><span class="icon icon-cal" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="5" width="18" height="16" rx="2" fill="currentColor" opacity=".15"/>
+              <path d="M3 9h18" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span> Month</label>
+          <select id="debt-month-select" aria-label="Select month for debt progress"></select>
+        </div>
+        <div class="debt-bars">
+          <div class="debt-bar">
+            <div class="bar-label"><span>118 Loan</span> <span id="bal-118" class="mono"></span></div>
+            <div class="bar"><div id="bar-118" class="bar-fill"></div></div>
+          </div>
+          <div class="debt-bar">
+            <div class="bar-label"><span>Credit Card</span> <span id="bal-cc" class="mono"></span></div>
+            <div class="bar"><div id="bar-cc" class="bar-fill"></div></div>
+          </div>
+          <div class="debt-bar">
+            <div class="bar-label"><span>Updraft</span> <span id="bal-up" class="mono"></span></div>
+            <div class="bar"><div id="bar-up" class="bar-fill"></div></div>
+          </div>
+        </div>
+        <div class="metric focus"><span class="label">Focus this month:</span> <span id="focus-this-month" class="mono"></span></div>
+        
+
+      </section>
+
+      <section class="card" aria-labelledby="table-title">
+        <h2 id="table-title">Plan — 18 Months</h2>
+        <div class="table-wrap">
+          <table id="plan-table" class="plan-table">
+            <thead>
+              <tr>
+                <th class="left">Month</th>
+                <th class="right" title="Current account at start of month">Start balance</th>
+                <th class="right">Income</th>
+                <th class="right" title="Reimbursements or other inflows">Special income</th>
+                <th class="right" title="Recurring + one-offs + minimums + food">Outgoings</th>
+                <th class="right">Extra → Debt/Savings</th>
+                <th class="right">Total Outflow</th>
+                <th class="right" title="Current account at end of month">End balance</th>
+                <th class="left">Focus this month</th>
+                <th class="right">118 bal</th>
+                <th class="right">Card bal</th>
+                <th class="right">Updraft bal</th>
+                <th class="center">Treat?</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footnote">
+      <p>All values persist locally in your browser. Print‑friendly dark theme. No external libraries.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+  </html>
