@@ -1,4 +1,4 @@
-# Alex Money Plan
+# A Money Plan
 
 A buffer-first avalanche debt payoff calculator and 18-month financial forecast tool.
 
@@ -29,3 +29,4 @@ Simply open `index.html` in a web browser. No build process or external dependen
 ## License
 
 Personal finance planning tool. All calculations are estimates for planning purposes only.
+
