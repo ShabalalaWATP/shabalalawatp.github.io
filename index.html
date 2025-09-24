@@ -15,6 +15,11 @@
                     <img src="images/scrum-in-the-sun-logo.png" alt="Scrum in the Sun Holiday Company logo">
                     <span class="logo-tagline">Holiday Company</span>
                 </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
                 <ul class="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#activities">Activities</a></li>
@@ -39,9 +44,9 @@
                         <p>Check with your on-the-day Scrum team to discuss with coach before arrival from session.</p>
                     </div>
                 </div>
-                <p class="risk-note">Risk: not wanting to come home.</p>
+                <p class="risk-note">⚠️ Risk: not wanting to come home.</p>
                 <div class="destination-pill">🇪🇸 Majorca, Balearic Islands</div>
-                <h1>Majorca escapes crafted for effortless sunshine</h1>
+                <h1 class="hero-title">Majorca escapes crafted for effortless sunshine</h1>
                 <p class="subtitle">Scrum in the Sun Holiday Company</p>
                 <p class="description">Experience bespoke Spanish island stays with curated itineraries, private hosting, and seamless support.</p>
                 <div class="hero-highlights">
@@ -65,17 +70,26 @@
                     </li>
                 </ul>
                 <div class="cta">
-                    <a class="btn-primary" href="https://scruminthesun.com/book" target="_blank" rel="noopener">Plan your escape</a>
-                    <span class="availability">Limited summer 2025 spaces remaining</span>
+                    <a class="btn-primary" href="https://scruminthesun.com/book" target="_blank" rel="noopener">
+                        <span>Plan your escape</span>
+                        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <span class="availability">🔥 Limited summer 2025 spaces remaining</span>
                 </div>
             </div>
             <div class="hero-image">
-                <img class="hero-logo" src="images/scrum-in-the-sun-logo.png" alt="Scrum in the Sun Holiday Company emblem">
+                <div class="hero-image-wrapper">
+                    <img class="hero-logo" src="images/scrum-in-the-sun-logo.png" alt="Scrum in the Sun Holiday Company emblem" loading="lazy">
+                    <div class="hero-badge">Since 2020</div>
+                </div>
             </div>
         </section>
 
         <section id="activities" class="content-section">
             <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Experience & Activities</h2>
                 <div class="content-grid">
                     <div class="content-card family-card">
                         <h3>Fun for the whole family</h3>
@@ -346,6 +360,30 @@
             </div>
         </section>
     </main>
+
+    <button class="scroll-to-top" aria-label="Scroll to top" id="scrollToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <p>🍪 We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+            <div class="cookie-actions">
+                <button class="btn-cookie-accept">Accept</button>
+                <a href="/privacy" class="btn-cookie-learn">Learn more</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+        </div>
+    </div>
 
     <footer>
         <div class="container">
