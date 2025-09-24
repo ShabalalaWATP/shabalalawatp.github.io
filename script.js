@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Smooth scrolling for navigation links
+    // Enhanced smooth scrolling with offset for fixed header
     const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
     
     navLinks.forEach(link => {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                const headerOffset = 100;
+                const headerOffset = 90; // Adjusted for better spacing
                 const elementPosition = targetSection.offsetTop;
                 const offsetPosition = elementPosition - headerOffset;
                 
@@ -50,8 +50,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // Close mobile menu after clicking
-                navMenu.classList.remove('active');
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                if (navMenu) {
+                    navMenu.classList.remove('active');
+                }
+                if (mobileMenuToggle) {
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                }
             }
         });
     });
@@ -178,15 +182,17 @@ document.addEventListener('DOMContentLoaded', function() {
         images.forEach(img => imageObserver.observe(img));
     }
 
-    // Add parallax effect to hero section
+    // Add parallax effect to hero section (disabled on mobile)
     const hero = document.querySelector('.hero');
     
     window.addEventListener('scroll', function() {
-        const scrolled = window.scrollY;
-        const parallaxSpeed = 0.5;
-        
-        if (hero && scrolled < window.innerHeight) {
-            hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        if (window.innerWidth > 768) { // Only apply parallax on desktop
+            const scrolled = window.scrollY;
+            const parallaxSpeed = 0.3; // Reduced speed to prevent overlap
+            
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+            }
         }
     });
 
